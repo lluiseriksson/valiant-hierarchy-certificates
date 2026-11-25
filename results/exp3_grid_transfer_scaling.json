@@ -1,0 +1,41 @@
+{
+  "experiment": "exp3_grid_transfer_scaling",
+  "rows": [
+    {
+      "grid_n": 2,
+      "num_vertices": 4,
+      "num_edges": 4,
+      "brute_force_states": 16,
+      "frontier_dim": 4,
+      "verify_ms": 0.1115,
+      "state_sum": "-18"
+    },
+    {
+      "grid_n": 3,
+      "num_vertices": 9,
+      "num_edges": 12,
+      "brute_force_states": 4096,
+      "frontier_dim": 8,
+      "verify_ms": 0.4142,
+      "state_sum": "-204"
+    },
+    {
+      "grid_n": 4,
+      "num_vertices": 16,
+      "num_edges": 24,
+      "brute_force_states": 16777216,
+      "frontier_dim": 16,
+      "verify_ms": 1.5084,
+      "state_sum": "315216"
+    },
+    {
+      "grid_n": 5,
+      "num_vertices": 25,
+      "num_edges": 40,
+      "brute_force_states": 1099511627776,
+      "frontier_dim": 32,
+      "verify_ms": 4.8059,
+      "state_sum": "5874075916"
+    }
+  ]
+}

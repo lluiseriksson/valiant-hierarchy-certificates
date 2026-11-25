@@ -1,0 +1,54 @@
+{
+  "experiment": "exp4_hierarchy_exponents",
+  "rows": [
+    {
+      "log2_n": 16,
+      "path_formula_exp": 2.4061,
+      "tree_abp_exp": 1.5512,
+      "grid_circuit_exp": 1.222,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 32,
+      "path_formula_exp": 3.0992,
+      "tree_abp_exp": 1.7605,
+      "grid_circuit_exp": 1.2947,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 64,
+      "path_formula_exp": 3.7924,
+      "tree_abp_exp": 1.9474,
+      "grid_circuit_exp": 1.3717,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 128,
+      "path_formula_exp": 4.4855,
+      "tree_abp_exp": 2.1179,
+      "grid_circuit_exp": 1.4532,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 256,
+      "path_formula_exp": 5.1787,
+      "tree_abp_exp": 2.2757,
+      "grid_circuit_exp": 1.5397,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 512,
+      "path_formula_exp": 5.8718,
+      "tree_abp_exp": 2.4232,
+      "grid_circuit_exp": 1.6312,
+      "fixed_poly_const": 2.0
+    },
+    {
+      "log2_n": 1024,
+      "path_formula_exp": 6.565,
+      "tree_abp_exp": 2.5622,
+      "grid_circuit_exp": 1.7282,
+      "fixed_poly_const": 2.0
+    }
+  ]
+}

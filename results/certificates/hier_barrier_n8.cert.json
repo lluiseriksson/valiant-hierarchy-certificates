@@ -1,0 +1,18 @@
+{
+  "schema": "VALIANT-HIER-CERT-1.0",
+  "mode": "hierarchy_separation_barrier_exact",
+  "name": "hier_barrier_n8",
+  "selector_table": [
+    "-2",
+    "9",
+    "-4",
+    "13"
+  ],
+  "grid_n": 8,
+  "tree_levels_L": 6,
+  "base_n": 8,
+  "poly_exp_k": 3,
+  "exp_s1_vf": 5,
+  "exp_s2_vbp": 8,
+  "exp_s3_vp": 12
+}

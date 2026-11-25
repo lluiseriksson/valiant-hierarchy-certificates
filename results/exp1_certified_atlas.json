@@ -1,0 +1,246 @@
+{
+  "experiment": "exp1_certified_atlas",
+  "count": 16,
+  "rows": [
+    {
+      "file": "path_d4_q2.cert.json",
+      "mode": "path_abp_vs_bisection_exact",
+      "verify_ms": 0.0953,
+      "summary": {
+        "verified": true,
+        "mode": "path_abp_vs_bisection_exact",
+        "d": 4,
+        "q": 2,
+        "abp_edges": 8,
+        "state_sum": "-271/2"
+      }
+    },
+    {
+      "file": "path_d8_q3.cert.json",
+      "mode": "path_abp_vs_bisection_exact",
+      "verify_ms": 0.3331,
+      "summary": {
+        "verified": true,
+        "mode": "path_abp_vs_bisection_exact",
+        "d": 8,
+        "q": 3,
+        "abp_edges": 54,
+        "state_sum": "-26737/16"
+      }
+    },
+    {
+      "file": "path_d16_q4.cert.json",
+      "mode": "path_abp_vs_bisection_exact",
+      "verify_ms": 1.4191,
+      "summary": {
+        "verified": true,
+        "mode": "path_abp_vs_bisection_exact",
+        "d": 16,
+        "q": 4,
+        "abp_edges": 224,
+        "state_sum": "-214025144665/512"
+      }
+    },
+    {
+      "file": "path_d24_q5.cert.json",
+      "mode": "path_abp_vs_bisection_exact",
+      "verify_ms": 4.3186,
+      "summary": {
+        "verified": true,
+        "mode": "path_abp_vs_bisection_exact",
+        "d": 24,
+        "q": 5,
+        "abp_edges": 550,
+        "state_sum": "265230714110774371/256"
+      }
+    },
+    {
+      "file": "tree_L2_q2.cert.json",
+      "mode": "binary_tree_circuit_dp_exact",
+      "verify_ms": 0.0502,
+      "summary": {
+        "verified": true,
+        "mode": "binary_tree_circuit_dp_exact",
+        "levels": 2,
+        "q": 2,
+        "num_vertices": 3,
+        "vp_gate_budget": 4,
+        "state_sum": "-67"
+      }
+    },
+    {
+      "file": "tree_L3_q2.cert.json",
+      "mode": "binary_tree_circuit_dp_exact",
+      "verify_ms": 0.1336,
+      "summary": {
+        "verified": true,
+        "mode": "binary_tree_circuit_dp_exact",
+        "levels": 3,
+        "q": 2,
+        "num_vertices": 7,
+        "vp_gate_budget": 20,
+        "state_sum": "-463/2"
+      }
+    },
+    {
+      "file": "tree_L4_q3.cert.json",
+      "mode": "binary_tree_circuit_dp_exact",
+      "verify_ms": 0.6053,
+      "summary": {
+        "verified": true,
+        "mode": "binary_tree_circuit_dp_exact",
+        "levels": 4,
+        "q": 3,
+        "num_vertices": 15,
+        "vp_gate_budget": 171,
+        "state_sum": "65190677/32"
+      }
+    },
+    {
+      "file": "tree_L5_q3.cert.json",
+      "mode": "binary_tree_circuit_dp_exact",
+      "verify_ms": 1.0592,
+      "summary": {
+        "verified": true,
+        "mode": "binary_tree_circuit_dp_exact",
+        "levels": 5,
+        "q": 3,
+        "num_vertices": 31,
+        "vp_gate_budget": 387,
+        "state_sum": "-188739623287773875/32768"
+      }
+    },
+    {
+      "file": "grid_2x2_q2.cert.json",
+      "mode": "grid_transfer_vnp_exact",
+      "verify_ms": 0.104,
+      "summary": {
+        "verified": true,
+        "mode": "grid_transfer_vnp_exact",
+        "rows": 2,
+        "cols": 2,
+        "q": 2,
+        "num_edges": 4,
+        "frontier_dim": 4,
+        "state_sum": "2"
+      }
+    },
+    {
+      "file": "grid_3x3_q2.cert.json",
+      "mode": "grid_transfer_vnp_exact",
+      "verify_ms": 0.3743,
+      "summary": {
+        "verified": true,
+        "mode": "grid_transfer_vnp_exact",
+        "rows": 3,
+        "cols": 3,
+        "q": 2,
+        "num_edges": 12,
+        "frontier_dim": 8,
+        "state_sum": "376"
+      }
+    },
+    {
+      "file": "grid_4x4_q2.cert.json",
+      "mode": "grid_transfer_vnp_exact",
+      "verify_ms": 1.4197,
+      "summary": {
+        "verified": true,
+        "mode": "grid_transfer_vnp_exact",
+        "rows": 4,
+        "cols": 4,
+        "q": 2,
+        "num_edges": 24,
+        "frontier_dim": 16,
+        "state_sum": "236688"
+      }
+    },
+    {
+      "file": "grid_3x3_q3.cert.json",
+      "mode": "grid_transfer_vnp_exact",
+      "verify_ms": 2.1825,
+      "summary": {
+        "verified": true,
+        "mode": "grid_transfer_vnp_exact",
+        "rows": 3,
+        "cols": 3,
+        "q": 3,
+        "num_edges": 12,
+        "frontier_dim": 27,
+        "state_sum": "-2709"
+      }
+    },
+    {
+      "file": "hier_barrier_n4.cert.json",
+      "mode": "hierarchy_separation_barrier_exact",
+      "verify_ms": 0.0577,
+      "summary": {
+        "verified": true,
+        "mode": "hierarchy_separation_barrier_exact",
+        "grid_edges": 24,
+        "tree_vertices": 15,
+        "tree_edges": 14,
+        "hierarchy_exponents": [
+          2,
+          3,
+          5,
+          8
+        ]
+      }
+    },
+    {
+      "file": "hier_barrier_n8.cert.json",
+      "mode": "hierarchy_separation_barrier_exact",
+      "verify_ms": 0.0555,
+      "summary": {
+        "verified": true,
+        "mode": "hierarchy_separation_barrier_exact",
+        "grid_edges": 112,
+        "tree_vertices": 63,
+        "tree_edges": 62,
+        "hierarchy_exponents": [
+          3,
+          5,
+          8,
+          12
+        ]
+      }
+    },
+    {
+      "file": "hier_barrier_n16.cert.json",
+      "mode": "hierarchy_separation_barrier_exact",
+      "verify_ms": 0.0492,
+      "summary": {
+        "verified": true,
+        "mode": "hierarchy_separation_barrier_exact",
+        "grid_edges": 480,
+        "tree_vertices": 255,
+        "tree_edges": 254,
+        "hierarchy_exponents": [
+          4,
+          6,
+          10,
+          15
+        ]
+      }
+    },
+    {
+      "file": "hier_barrier_n32.cert.json",
+      "mode": "hierarchy_separation_barrier_exact",
+      "verify_ms": 0.0633,
+      "summary": {
+        "verified": true,
+        "mode": "hierarchy_separation_barrier_exact",
+        "grid_edges": 1984,
+        "tree_vertices": 1023,
+        "tree_edges": 1022,
+        "hierarchy_exponents": [
+          5,
+          8,
+          13,
+          20
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "VALIANT-HIER-CERT-1.0",
+  "mode": "grid_transfer_vnp_exact",
+  "name": "grid_2x2_q2",
+  "rows": 2,
+  "cols": 2,
+  "states_q": 2,
+  "vertex_tables": {
+    "0,0": [
+      "2",
+      "0",
+      "-2",
+      "1"
+    ],
+    "0,1": [
+      "-1",
+      "2",
+      "0",
+      "-2"
+    ],
+    "1,0": [
+      "-2",
+      "1",
+      "-1",
+      "2"
+    ],
+    "1,1": [
+      "0",
+      "-2",
+      "1",
+      "-1"
+    ]
+  },
+  "claimed_state_sum": "2"
+}

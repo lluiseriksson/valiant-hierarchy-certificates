@@ -1,0 +1,20 @@
+import ValiantHierarchy
+
+#print axioms ValiantHierarchy.path3_state_sum_bilinear
+#print axioms ValiantHierarchy.path4_abp_bisection_assoc
+#print axioms ValiantHierarchy.tree_state_sum_dp_factorization
+#print axioms ValiantHierarchy.grid2x2_state_sum_trace
+#print axioms ValiantHierarchy.grid_vertex_table_degree_bound
+#print axioms ValiantHierarchy.path3_multilinearity_scale
+#print axioms ValiantHierarchy.disconnected_state_sum_product
+#print axioms ValiantHierarchy.abp_layer_edge_budget_list
+#print axioms ValiantHierarchy.formula_bisection_power_step
+#print axioms ValiantHierarchy.tree_circuit_gate_budget_list
+#print axioms ValiantHierarchy.grid_transfer_space_exp_growth
+#print axioms ValiantHierarchy.vnp_char_free_1bit_selector
+#print axioms ValiantHierarchy.vnp_char_free_2bit_selector
+#print axioms ValiantHierarchy.det2_signed_path_embedding
+#print axioms ValiantHierarchy.hierarchy_strict_exp_chain
+#print axioms ValiantHierarchy.superpoly_beats_fixed_poly
+#print axioms ValiantHierarchy.grid_edge_count_exact
+#print axioms ValiantHierarchy.binary_tree_vertex_recurrence

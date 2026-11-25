@@ -1,0 +1,50 @@
+{
+  "experiment": "exp2_path_and_tree_scaling",
+  "rows": [
+    {
+      "levels_L": 2,
+      "vertices": 3,
+      "q": 3,
+      "path_verify_ms": 0.0858,
+      "tree_verify_ms": 0.06,
+      "abp_edges": 9,
+      "vp_gate_budget": 9
+    },
+    {
+      "levels_L": 3,
+      "vertices": 7,
+      "q": 3,
+      "path_verify_ms": 0.3247,
+      "tree_verify_ms": 0.23,
+      "abp_edges": 45,
+      "vp_gate_budget": 63
+    },
+    {
+      "levels_L": 4,
+      "vertices": 15,
+      "q": 3,
+      "path_verify_ms": 0.6642,
+      "tree_verify_ms": 0.4598,
+      "abp_edges": 117,
+      "vp_gate_budget": 171
+    },
+    {
+      "levels_L": 5,
+      "vertices": 31,
+      "q": 3,
+      "path_verify_ms": 1.4889,
+      "tree_verify_ms": 1.0148,
+      "abp_edges": 261,
+      "vp_gate_budget": 387
+    },
+    {
+      "levels_L": 6,
+      "vertices": 63,
+      "q": 3,
+      "path_verify_ms": 3.2554,
+      "tree_verify_ms": 2.1849,
+      "abp_edges": 549,
+      "vp_gate_budget": 819
+    }
+  ]
+}
