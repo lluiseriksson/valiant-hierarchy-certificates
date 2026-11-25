@@ -12,30 +12,36 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and Scope Calibration}{1}{section.1}\protected@file@percent }
 \newlabel{eq:statesum}{{1}{1}{Introduction and Scope Calibration}{equation.1}{}}
 \@writefile{toc}{\contentsline {paragraph}{Honest Two-Layer Scope Calibration.}{1}{section*.2}\protected@file@percent }
-\bibstyle{plain}
-\bibdata{references}
-\bibcite{burgisser2000completeness}{1}
+\citation{openai2026hierarchy}
+\citation{openai2026hierarchy}
+\citation{openai2026hierarchy}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Machine-Checked Lean~4.35.0 Kernel}{2}{section.2}\protected@file@percent }
 \newlabel{sec:lean}{{2}{2}{Machine-Checked Lean~4.35.0 Kernel}{section.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Specification of \texttt  {VALIANT-HIER-CERT-1.0}{}}{2}{section.3}\protected@file@percent }
 \newlabel{sec:cert}{{3}{2}{Specification of \texorpdfstring {\certschema {}}{VALIANT-HIER-CERT-1.0}}{section.3}{}}
 \newlabel{def:spec}{{3.1}{2}{\certschema {} Acceptance Predicates}{theorem.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces (a)~Asymptotic exponents $\ln \ln n$, $\sqrt  {\ln \ln n}$, $(\ln n)^{1/12}$ vs.\ $k=2$ for $\log _2 n\in [16,1024]$ (noting crossover above $2$ occurs at much larger $n$). (b)~Grid edge assignments $2^{2n(n-1)}$ vs.\ exact transfer-matrix frontier $2^n$.}}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:hier}{{1}{2}{(a)~Asymptotic exponents $\ln \ln n$, $\sqrt {\ln \ln n}$, $(\ln n)^{1/12}$ vs.\ $k=2$ for $\log _2 n\in [16,1024]$ (noting crossover above $2$ occurs at much larger $n$). (b)~Grid edge assignments $2^{2n(n-1)}$ vs.\ exact transfer-matrix frontier $2^n$}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces (a)~Reference exponents from~\cite  {openai2026hierarchy} vs.\ $k=2$ for $\log _2 n\in [16,1024]$: $\ln \ln n\in [2.41,6.57]>2$ throughout, $\sqrt  {\ln \ln n}$ crosses $2$ near $\log _2 n\approx 78.8$, and $(\ln n)^{1/12}\in [1.22,1.73]$ crosses $2$ at $\log _2 n\approx 5909$. (b)~Grid edge assignments $2^{2n(n-1)}$ vs.\ exact transfer-matrix frontier $2^n$.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:hier}{{1}{2}{(a)~Reference exponents from~\cite {openai2026hierarchy} vs.\ $k=2$ for $\log _2 n\in [16,1024]$: $\ln \ln n\in [2.41,6.57]>2$ throughout, $\sqrt {\ln \ln n}$ crosses $2$ near $\log _2 n\approx 78.8$, and $(\ln n)^{1/12}\in [1.22,1.73]$ crosses $2$ at $\log _2 n\approx 5909$. (b)~Grid edge assignments $2^{2n(n-1)}$ vs.\ exact transfer-matrix frontier $2^n$}{figure.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces (a)~Matched-vertex exact-$\mathbb  {Q}$ replay latency for paths and complete binary trees ($q=3$). (b)~Exponential transfer-frontier cost on $n\times n$ square grids ($2\times 2\to 5\times 5, q=2$).}}{2}{figure.2}\protected@file@percent }
 \newlabel{fig:scaling}{{2}{2}{(a)~Matched-vertex exact-$\QQ $ replay latency for paths and complete binary trees ($q=3$). (b)~Exponential transfer-frontier cost on $n\times n$ square grids ($2\times 2\to 5\times 5, q=2$)}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments, Atlas, and Red-Team Audit}{2}{section.4}\protected@file@percent }
 \newlabel{sec:experiments}{{4}{2}{Experiments, Atlas, and Red-Team Audit}{section.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{2}{section.5}\protected@file@percent }
-\newlabel{sec:outlook}{{5}{2}{Conclusion}{section.5}{}}
-\bibcite{nisan1991lower}{2}
-\bibcite{openai2026hierarchy}{3}
-\bibcite{openai2026vpvnp}{4}
-\bibcite{valiant1979completeness}{5}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Worked Exact-$\mathbb  {Q}$ Witnesses and Red-Team Taxonomy}{2}{section.5}\protected@file@percent }
+\newlabel{sec:worked}{{5}{2}{Worked Exact-\texorpdfstring {$\QQ $}{Q} Witnesses and Red-Team Taxonomy}{section.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Complete 18-theorem Lean~4.35.0 kernel in \texttt  {lean/ValiantHierarchy.lean} ($0$~\texttt  {sorry}, $0$~\texttt  {Classical.choice}, $0$~warnings; \texttt  {P,Q} abbreviates \texttt  {[propext, Quot.sound]}).}}{3}{table.1}\protected@file@percent }
 \newlabel{tab:lean}{{1}{3}{Complete 18-theorem Lean~4.35.0 kernel in \texttt {lean/ValiantHierarchy.lean} ($0$~\texttt {sorry}, $0$~\texttt {Classical.choice}, $0$~warnings; \texttt {P,Q} abbreviates \texttt {[propext, Quot.sound]})}{table.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Atlas of $16$ exact-$\mathbb  {Q}$ \texttt  {VALIANT-HIER-CERT-1.0}{} certificates (\texttt  {results/exp1\_certified\_atlas.json}; all 16 verified).}}{3}{table.2}\protected@file@percent }
 \newlabel{tab:atlas}{{2}{3}{Atlas of $16$ exact-$\QQ $ \certschema {} certificates (\texttt {results/exp1\_certified\_atlas.json}; all 16 verified)}{table.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces (a)~Zero-float replay latencies across all 16 \texttt  {VALIANT-HIER-CERT-1.0}{} certificates ($0.049$--$4.319\,\mathrm  {ms}$). (b)~Balanced 4-per-mode coverage.}}{3}{figure.3}\protected@file@percent }
 \newlabel{fig:atlas}{{3}{3}{(a)~Zero-float replay latencies across all 16 \certschema {} certificates ($0.049$--$4.319\,\mathrm {ms}$). (b)~Balanced 4-per-mode coverage}{figure.3}{}}
-\gdef \@abspage@last{3}
+\@writefile{toc}{\contentsline {paragraph}{Adversarial Red-Team Taxonomy (54/54 Rejected).}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{3}{section.6}\protected@file@percent }
+\newlabel{sec:outlook}{{6}{3}{Conclusion}{section.6}{}}
+\bibstyle{plain}
+\bibdata{references}
+\bibcite{burgisser2000completeness}{1}
+\bibcite{nisan1991lower}{2}
+\bibcite{openai2026hierarchy}{3}
+\bibcite{openai2026vpvnp}{4}
+\bibcite{valiant1979completeness}{5}
+\gdef \@abspage@last{4}

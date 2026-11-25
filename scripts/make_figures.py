@@ -40,18 +40,18 @@ def make_fig1() -> None:
     r4 = d4["rows"]
     xs = [r["log2_n"] for r in r4]
     ax1.plot(xs, [r["path_formula_exp"] for r in r4], "o-", color="#1b6ca8", lw=2.1, ms=5.5,
-             label=r"Path ($\mathsf{VF}\subsetneq\mathsf{VBP}$): $\ln\ln n$")
+             label=r"Path formula exponent: $\ln\ln n$")
     ax1.plot(xs, [r["tree_abp_exp"] for r in r4], "s--", color="#2a9d8f", lw=2.0, ms=5.5,
-             label=r"Tree ($\mathsf{VBP}\subsetneq\mathsf{VP}$): $\sqrt{\ln\ln n}$")
+             label=r"Tree ABP exponent: $\sqrt{\ln\ln n}$")
     ax1.plot(xs, [r["grid_circuit_exp"] for r in r4], "^-.", color="#c1121f", lw=2.0, ms=5.8,
-             label=r"Grid ($\mathsf{VP}\subsetneq\mathsf{VNP}$): $(\ln n)^{1/12}$")
-    ax1.axhline(2.0, color="#666", lw=1.3, ls=":", label=r"Fixed polynomial degree $k=2$")
+             label=r"Grid circuit exponent: $(\ln n)^{1/12}$")
+    ax1.axhline(2.0, color="#666", lw=1.3, ls=":", label=r"Reference degree $k=2$")
     ax1.set_xscale("log", base=2)
     ax1.set_xticks(xs)
     ax1.set_xticklabels([str(x) for x in xs])
     ax1.set_xlabel(r"Problem scale $\log_2 n$")
-    ax1.set_ylabel(r"Superpolynomial exponent $e(n)$ in $n^{e(n)}$")
-    ax1.set_title(r"(a) Three Valiant-Hierarchy Exponents (Thm. 1.1)")
+    ax1.set_ylabel(r"Reference exponent $e(n)$ in $n^{e(n)}$")
+    ax1.set_title(r"(a) Reference Hierarchy Exponents [4]")
     ax1.legend(loc="upper left", frameon=True, framealpha=0.94)
 
     # Panel (b): Square grid exact transfer-matrix contraction vs brute-force state space (q=2)

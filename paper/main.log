@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.15)  25 NOV 2026 21:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.15)  25 NOV 2026 22:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -624,6 +624,12 @@ luis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/lluis
 {C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
 Users/lluis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}{C:/
 Users/lluis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+[]$\OMS/lmsy/m/n/7 8\OML/lmm/m/it/7 a[]; b[]; c[]; d[] \OMS/lmsy/m/n/7 2 \U/msb
+/m/n/7 Z$\T1/lmr/m/n/7 (+20) , $\OML/lmm/m/it/7 a[]b[]c[]d[][]a[]b[]c[]d[][]a[]
+b[]c[]d[][]a[]b[]c[]d[] \OT1/lmr/m/n/7 (+20) =
+ []
+
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 89.
 
@@ -643,12 +649,6 @@ JSON
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 98--99
-[]\T1/lmr/bx/n/10 (+20) Mode 4 (\T1/lmtt/b/n/10 hierarchy_separation_barrier_ex
-act\T1/lmr/bx/n/10 (+20) ):
- []
-
-
 Underfull \hbox (badness 2293) in paragraph at lines 103--104
 \T1/lmr/m/n/10 (+20) lists all $\OT1/lmr/m/n/10 (+20) 16$ \T1/lmr/m/n/10 (+20) 
 canon-i-cal cer-tifi-cates^^Vincluding the ex-
@@ -660,19 +660,19 @@ Underfull \hbox (badness 1953) in paragraph at lines 103--104
 d24_q5 \T1/lmr/m/n/10 (+20) and
  []
 
-<figures/fig1_hierarchy_and_grid.png, id=79, 679.338pt x 263.7855pt>
+<figures/fig1_hierarchy_and_grid.png, id=84, 679.338pt x 263.7855pt>
 File: figures/fig1_hierarchy_and_grid.png Graphic file (type png)
 <use figures/fig1_hierarchy_and_grid.png>
 Package pdftex.def Info: figures/fig1_hierarchy_and_grid.png  used on input lin
 e 138.
 (pdftex.def)             Requested size: 252.945pt x 98.21895pt.
-<figures/fig2_model_replay_scaling.png, id=81, 679.338pt x 263.7855pt>
+<figures/fig2_model_replay_scaling.png, id=88, 679.338pt x 263.7855pt>
 File: figures/fig2_model_replay_scaling.png Graphic file (type png)
 <use figures/fig2_model_replay_scaling.png>
 Package pdftex.def Info: figures/fig2_model_replay_scaling.png  used on input l
 ine 146.
 (pdftex.def)             Requested size: 252.945pt x 98.21895pt.
-<figures/fig3_atlas_summary.png, id=82, 679.338pt x 281.853pt>
+<figures/fig3_atlas_summary.png, id=89, 679.338pt x 281.853pt>
 File: figures/fig3_atlas_summary.png Graphic file (type png)
 <use figures/fig3_atlas_summary.png>
 Package pdftex.def Info: figures/fig3_atlas_summary.png  used on input line 154
@@ -684,38 +684,52 @@ Underfull \hbox (badness 1490) in paragraph at lines 156--156
 l
  []
 
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 160.
+[2 <./figures/fig1_hierarchy_and_grid.png> <./figures/fig2_model_replay_scaling
+.png>]
+Underfull \hbox (badness 1521) in paragraph at lines 169--170
+\T1/lmr/bx/n/10 (+20) Group B (10 Mode 1): $\OML/lmm/m/it/10 d < \OT1/lmr/m/n/1
+0 (+20) 3$ \T1/lmr/m/n/10 (+20) or $\OML/lmm/m/it/10 d > \OT1/lmr/m/n/10 (+20) 
+64$\T1/lmr/m/n/10 (+20) ,
+ []
 
-Underfull \hbox (badness 4752) in paragraph at lines 161--162
+
+Underfull \hbox (badness 1077) in paragraph at lines 169--170
+\OML/lmm/m/it/10 q < \OT1/lmr/m/n/10 (+20) 2$ \T1/lmr/m/n/10 (+20) or $\OML/lmm
+/m/it/10 q > \OT1/lmr/m/n/10 (+20) 8$\T1/lmr/m/n/10 (+20) , wrong ma-trix/vecto
+r counts or
+ []
+
+
+Underfull \hbox (badness 4752) in paragraph at lines 172--173
 \T1/lmr/m/n/10 (+20) ker-nel for fixed $\OML/lmm/m/it/10 q \OT1/lmr/m/n/10 (+20
 ) = 2$ \T1/lmr/m/n/10 (+20) small-graph con-trac-tion
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 161--162
+Underfull \hbox (badness 1558) in paragraph at lines 172--173
 \T1/lmr/m/n/10 (+20) iden-ti-ties and el-e-men-tary arith-metic bounds, paired
  []
 
-(main.bbl
-Underfull \vbox (badness 1874) has occurred while \output is active []
+[3 <./figures/fig3_atlas_summary.png>] (main.bbl) [4
 
- [2 <./figures/fig1_hierarchy_and_grid.png> <./figures/fig2_model_replay_scalin
-g.png>])
-[3 <./figures/fig3_atlas_summary.png>] (main.aux)
+] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1A51EA93E6024F496CC89E49C4DC1A46;1021.
+(rerunfilecheck)             Checksum: A703E559E56CD32E8691F6C6DE75C4A4;1309.
  ) 
 Here is how much of TeX's memory you used:
- 13415 strings out of 467871
- 212503 string characters out of 5418376
- 683137 words of memory out of 5000000
- 41871 multiletter control sequences out of 15000+600000
- 712446 words of font info for 191 fonts, out of 8000000 for 9000
+ 13445 strings out of 467871
+ 212987 string characters out of 5418376
+ 692286 words of memory out of 5000000
+ 41889 multiletter control sequences out of 15000+600000
+ 719425 words of font info for 199 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,1679b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,79p,1679b,688s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
@@ -739,9 +753,9 @@ uis/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/llu
 is/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 ><C:/Users/lluis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symb
 ols/msbm7.pfb>
-Output written on main.pdf (3 pages, 1016750 bytes).
+Output written on main.pdf (4 pages, 1028055 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 51768 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 236 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 55872 words of extra memory for PDF output out of 61914 (max. 10000000)
 
