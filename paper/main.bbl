@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{burgisser2000completeness}
+Peter B{\"u}rgisser.
+\newblock {\em Completeness and Reduction in Algebraic Complexity Theory}.
+\newblock Springer, 2000.
+
+\bibitem{nisan1991lower}
+Noam Nisan.
+\newblock Lower bounds for non-commutative computation.
+\newblock In {\em Proceedings of the 23rd Annual ACM Symposium on Theory of
+  Computing (STOC)}, pages 410--418, 1991.
+
+\bibitem{openai2026hierarchy}
+{OpenAI}.
+\newblock Paths, trees and grids separate {V}aliant's hierarchy.
+\newblock OpenAI Math Preprint (\texttt{openai/math}), November 24, 2026.
+
+\bibitem{openai2026vpvnp}
+{OpenAI}.
+\newblock {VP} and {VNP} are different.
+\newblock OpenAI Math Preprint (\texttt{openai/math}), November 23, 2026.
+
+\bibitem{valiant1979completeness}
+Leslie~G. Valiant.
+\newblock Completeness classes in algebra.
+\newblock In {\em Proceedings of the 11th Annual ACM Symposium on Theory of
+  Computing (STOC)}, pages 249--261, 1979.
+
+\end{thebibliography}

@@ -1,179 +1,165 @@
-\documentclass[11pt,a4paper]{article}
-
-\usepackage[margin=0.84in]{geometry}
+\documentclass[10pt,twocolumn]{article}
+\usepackage[margin=0.64in,columnsep=0.22in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{microtype}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{xurl}
 \usepackage[hidelinks,
-  pdftitle={Exact-Q Path, Binary-Tree, and Square-Grid State-Sum Certificates for Valiant's Arithmetic Hierarchy},
+  pdftitle={Exact-Q Graph State-Sum Contraction Evaluators and Machine-Checked Algebraic Kernel for Paths, Binary Trees, and Square Grids},
   pdfauthor={Lluis Eriksson}
 ]{hyperref}
 
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
 
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\certschema}{\texttt{VALIANT-HIER-CERT-1.0}}
-\emergencystretch=3em
-\sloppy
 
-\title{\bfseries Exact-$\QQ$ Path, Binary-Tree, and Square-Grid State-Sum Certificates for Valiant's Arithmetic Hierarchy ($\mathsf{VF} \subsetneq \mathsf{VBP} \subsetneq \mathsf{VP} \subsetneq \mathsf{VNP}$)}
-
-\author{Lluis Eriksson\thanks{Independent researcher (Sweden). Manuscript licensed under CC-BY-4.0. Prepared with AI-assisted formal verification, code generation, and mathematical drafting (Google Antigravity). Code, zero-dependency Lean~4 proofs, and exact-$\QQ$ certificates (MIT license): \url{https://github.com/lluiseriksson/valiant-hierarchy-certificates}.}}
-
-\date{November 2026}
+\title{\vspace{-0.8em}\bfseries Exact-$\QQ$ Graph State-Sum Contraction Evaluators and Machine-Checked Algebraic Kernel for Paths, Binary Trees, and Square Grids}
+\author{Lluis Eriksson\thanks{Independent researcher (Sweden). Manuscript and figures: CC-BY-4.0; code, Lean~4 proofs, and exact-$\QQ$ certificates: MIT. Prepared with transparent AI assistance via Google Antigravity. Repository: \url{https://github.com/lluiseriksson/valiant-hierarchy-certificates}.}}
+\date{November 25, 2026}
 
 \begin{document}
 \maketitle
+\vspace{-1.1em}
 
 \begin{abstract}
-On November 24, 2026, OpenAI (\texttt{openai/math}) proved strict separation of Valiant's entire arithmetic hierarchy $\mathsf{VF}_{\FF} \subsetneq \mathsf{VBP}_{\FF} \subsetneq \mathsf{VP}_{\FF} \subsetneq \mathsf{VNP}_{\FF}$ over every field $\FF$ (Theorem~1.1) using a single unified graph state-sum polynomial $Z_{G,q}(X) = \sum_{a \in [q]^E}\prod_{v \in V} X_{v, a|_{E(v)}}$ evaluated on three canonical graph families: paths ($\mathsf{VBP}$ vs.\ border formula size $n^{\Omega(\log\log n)}$), complete binary trees ($\mathsf{VP}$ vs.\ border ABP size $n^{\Omega(\sqrt{\log\log n})}$), and $n\times n$ square grids ($\mathsf{VNP}$ vs.\ border circuit size $n^{\Omega((\log n)^{1/12})}$). Here we formalize and operationalize the core algebraic contraction, model-specific polynomial upper-bound, characteristic-free $\mathsf{VNP}$ selector, and strict hierarchy-separation laws in an $18$-theorem zero-dependency Lean~4 kernel (\texttt{v4.35.0}, $0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, $0$~warnings) paired with a pure-stdlib zero-float exact-$\QQ$ verifier (\certschema{}). First, we machine-check exact equivalence between brute-force edge-labeling state sums and model-optimal contractions: $3$-vertex path bilinear forms, $4$-vertex path ABP/bisection associativity, $8$-term binary-tree bottom-up $\mathsf{VP}$ dynamic programming, and $16$-term $2\times 2$ grid transfer-matrix traces (Lean~4 Theorems~1--4). Second, we formalize grid vertex degree/table bounds ($q^d \le q^4$, axiom-free), multilinearity, disjoint-union multiplicativity, inductive ABP $L q^2$ and tree-circuit $V q^3$ budgets, bisection doubling (axiom-free), and exponential grid frontier growth $q^{n+1} > q^n$ (Lean~4 Theorems~5--11). Third, we prove characteristic-free $1$- and $2$-bit Boolean $\mathsf{VNP}$ table selectors over $\ZZ$, signed $2$-path determinant embedding, strict superpolynomial hierarchy chains $n^{s_1} < n^{s_2} < n^{s_3}$, and exact grid-edge and binary-tree vertex recurrences (Lean~4 Theorems~12--18). Our verifier replays $16/16$ exact-$\QQ$ certificates in $0.049$--$4.319\,\mathrm{ms}$ (contracting $5\times 5$ grids over $2^{40} \approx 1.1\times 10^{12}$ edge states in $4.806\,\mathrm{ms}$), cross-checks all three exact evaluators against brute-force $q^E$ summation, and rejects $54/54$ live adversarial attacks.
+Motivated by graph state-sum polynomial witnesses $Z_{G,q}(X) = \sum_{a \in [q]^E}\prod_{v \in V} X_{v, a|_{E(v)}}$ on paths, binary trees, and square grids in algebraic complexity theory, we present an explicitly scoped, standalone, zero-floating-point verification stack pairing two layers. Layer~1 (\texttt{ValiantHierarchy.lean}, Lean~4.35.0; 18 theorems, $0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, $0$~warnings, 2 zero-axiom theorems) machine-checks four fixed $q=2$ small-graph contraction identities over $\ZZ$ ($3$-vertex path $P_3$ brute-force vs.\ $(x^\top M)z$, $4$-vertex path $P_4$ sequential/midpoint/bisection associativity, an $8$-term $3$-edge $4$-vertex degree-$3$ rooted tree DP factorization, and a $16$-term $C_4$ cycle transfer-matrix trace $\operatorname{Tr}(ABCD)$) alongside 14 elementary integer/$\NN$/list arithmetic lemmas ($q^d\le q^4$, list-sum budgets, exponential growth $q^{n+1}>q^n$, characteristic-free $1$- and $2$-bit Boolean selectors, $\det_2$ embedding, integer exponent chains $n^k < n^{s_1} < n^{s_2} < n^{s_3}$, and graph size counts). Layer~2 (\certschema{}, pure-stdlib Python \texttt{Fraction}) provides a fully specified four-mode auditor that evaluates general finite-order path ABP/bisection, complete binary-tree bottom-up DP, and square-grid transfer-matrix state sums over $\QQ$ without floats, replays $16/16$ canonical certificates in $0.049$--$4.319\,\mathrm{ms}$ (contracting $5\times 5$ grids over $2^{40}$ edge states in $4.806\,\mathrm{ms}$), cross-checks all evaluators against brute-force $q^E$ summation, and rejects $54/54$ live adversarial attacks.
 \end{abstract}
 
-\section{Introduction}
+\section{Introduction and Scope Calibration}
+Valiant's algebraic complexity classes~\cite{valiant1979completeness,burgisser2000completeness,nisan1991lower} classify multivariate polynomial families into formulas ($\mathsf{VF}$), algebraic branching programs ($\mathsf{VBP}$), polynomial-size circuits ($\mathsf{VP}$), and exponential-sum projections ($\mathsf{VNP}$). For any finite graph $G=(V,E)$ and alphabet $[q]=\{0,\dots,q-1\}$, the graph state-sum polynomial
+\begin{equation}
+  Z_{G,q}(X) := \sum_{a \in [q]^E} \prod_{v \in V} X_{v, a|_{E(v)}}
+  \label{eq:statesum}
+\end{equation}
+maps directly to linear-algebraic contractions once incident edges at each vertex $v$ are ordered: on a $d$-vertex path $P_d$ ($E = \{e_1,\dots,e_{d-1}\}$), endpoint tables $x,z\in\QQ^q$ and interior degree-$2$ vertex tables $M^{(i)}_{a,b} := X_{v_i,(a,b)}\in\QQ^{q\times q}$ give $Z_{P_d,q} = x^\top M^{(1)}\cdots M^{(d-2)} z$; on a $4$-cycle $C_4$ (the $2\times 2$ square grid), degree-$2$ vertex tables $A,B,C,D\in\QQ^{q\times q}$ give $Z_{C_4,q} = \operatorname{Tr}(ABCD)$; on a complete binary tree $T_L$ of $L$ levels ($2^L-1$ vertices), leaf vectors $u\in\QQ^q$, internal degree-$3$ tensors $T_{a,b,c}\in\QQ^{q\times q\times q}$, and the degree-$2$ root matrix $R\in\QQ^{q\times q}$ contract bottom-up in $O(2^{L-1} q^3)$ operations. These three families motivate the border-complexity separation hierarchy proposed in~\cite{openai2026hierarchy,openai2026vpvnp} (citing asymptotic exponents $\ln\ln n$, $\sqrt{\ln\ln n}$, and $(\ln n)^{1/12}$).
 
-Valiant's algebraic complexity classes~\cite{valiant1979completeness,burgisser2000completeness} stratify multivariate polynomial families into arithmetic formulas ($\mathsf{VF}$), algebraic branching programs ($\mathsf{VBP}$), polynomial-size arithmetic circuits ($\mathsf{VP}$), and exponential-sum projections ($\mathsf{VNP}$), with classic non-commutative lower bounds establishing path/ABP benchmarks~\cite{nisan1991lower}. Following its November 23, 2026 proof of $\mathsf{VP} \neq \mathsf{VNP}$~\cite{openai2026vpvnp}, OpenAI~\cite{openai2026hierarchy} proved on November 24, 2026 that over every field $\FF$,
-\[
-  \mathsf{VF}_{\FF} \subsetneq \mathsf{VBP}_{\FF} \subsetneq \mathsf{VP}_{\FF} \subsetneq \mathsf{VNP}_{\FF},
-\]
-witnessed uniformly by the graph state sum $Z_{G,q}(X) = \sum_{a \in [q]^E}\prod_{v \in V} X_{v, a|_{E(v)}}$ on paths ($P_d$), complete binary trees ($T_L$), and square grids ($\mathrm{Grid}_{n\times n}$), with degree-component border lower bounds $n^{\Omega(\log\log n)}$, $n^{\Omega(\sqrt{\log\log n})}$, and $n^{\Omega((\log n)^{1/12})}$, respectively.
-
-We mechanize all $18$ algebraic contraction identities, complexity-budget bounds, characteristic-free Boolean $\mathsf{VNP}$ selectors, and strict exponent-separation laws in zero-dependency Lean~4 (\texttt{lean/ValiantHierarchy.lean}) and build a pure-stdlib zero-float verifier (\certschema{}, \texttt{src/valiant\_certifier.py}) certifying exact-$\QQ$ path, binary-tree, grid, and hierarchy-barrier witnesses.
-
-\section{Main Exact-\texorpdfstring{$\ZZ/\QQ$}{Z/Q} Contraction and Hierarchy Theorems}\label{sec:results}
-
-\subsection{Exact Model-Optimal State-Sum Contractions (Paths, Trees, and Grids)}
-
-\begin{theorem}[Exact State-Sum Contractions Across All Three Witness Families]\label{thm:contractions}
-\leavevmode
-\begin{enumerate}[leftmargin=1.8em,itemsep=2pt]
-  \item \textbf{Paths ($\mathsf{VBP}$ ABP vs.\ $\mathsf{VF}$ Bisection):} On a $3$-vertex path $P_3$ with $q=2$, the brute-force sum over all $2^2 = 4$ edge labelings equals the sequential ABP form $(x^\top M)z$; on $P_4$, both sequential ABP evaluation $((x^\top A)B)z$ and midpoint contraction $(x^\top A)(Bz)$ equal divide-and-conquer bisection $(x^\top (AB))z$ identically over $\ZZ$ (Lean~4 Theorems~1--2).
-  \item \textbf{Binary Trees ($\mathsf{VP}$ Circuit DP) and Square Grids ($\mathsf{VNP}$ Transfer Trace):} On a $3$-edge binary tree with $q=2$, the $2^3 = 8$-term edge-labeling state sum factors identically into bottom-up circuit evaluation; on the $2\times 2$ square grid ($4$-cycle), the $2^4 = 16$-term state sum equals the exact transfer-matrix trace $\operatorname{Tr}(ABCD)$ over $\ZZ$ (Lean~4 Theorems~3--4).
+\paragraph{Honest Two-Layer Scope Calibration.}
+All formal results and exact-$\QQ$ algorithms in this paper are completely self-contained and do not rely on unrefereed external proofs:
+\begin{enumerate}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item \textbf{Layer~1 (Lean~4.35.0 Kernel, Table~\ref{tab:lean}):} Theorems~1--4 prove exact algebraic contraction identities for four fixed $q=2$ small graphs ($P_3$, $P_4$ associativity, a $3$-edge $4$-vertex degree-$3$ rooted tree, and $C_4$). Theorems~5--18 prove elementary $\ZZ$/$\NN$/\texttt{List} arithmetic inequalities, graph counts, and $1$-/$2$-bit Boolean selectors.
+  \item \textbf{Layer~2 (\certschema{} Auditor, Definition~\ref{def:spec}):} Evaluates general finite-order ($d\le 64, L\le 6, r\times c\le 5\times 5$) path, complete binary-tree, and square-grid state sums over exact $\QQ$ without floats, cross-checked against brute-force $q^E$ summation in \texttt{tests/test\_suite.py}.
+  \item \textbf{Explicit Non-Claims:} Our Lean~4 kernel does \emph{not} formalize general graphs, arbitrary $(d,L,n,q)$ state sums, ABPs, circuits, formulas, or Valiant's complexity classes ($\mathsf{VF},\mathsf{VBP},\mathsf{VP},\mathsf{VNP}$), nor does it formalize the border-complexity lower bounds of~\cite{openai2026hierarchy,openai2026vpvnp}. Note also that Lean Theorem~2 proves $P_4$ parenthesization associativity $((x^\top A)B)z = (x^\top A)(Bz) = (x^\top(AB))z$, while equivalence with brute-force $q^E$ enumeration for $d\ge 4$ is checked in Python.
 \end{enumerate}
-\end{theorem}
 
-\subsection{Polynomial Upper-Bound Budgets vs.\ Exponential Grid Frontier Growth}
+\section{Machine-Checked Lean~4.35.0 Kernel}\label{sec:lean}
+\texttt{lean/ValiantHierarchy.lean} compiles standalone under Lean~4.35.0 with $0$ external dependencies, $0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, and $0$~warnings: 2 zero-axiom theorems (\texttt{none}: \#5, \#9) and 16 \texttt{[propext, Quot.sound]} theorems (Table~\ref{tab:lean}).
 
-\begin{theorem}[Structural Budgets and Characteristic-Free $\mathsf{VNP}$ Encoding]\label{thm:budgets}
-\leavevmode
-\begin{enumerate}[leftmargin=1.8em,itemsep=2pt]
-  \item \textbf{Grid Table Degree Bound, Multilinearity, and Disjoint Multiplicativity:} Every $n\times n$ grid vertex has degree $d \le 4$, bounding table size by $q^d \le q^4$ for all $q \ge 1$ (axiom-free, Lean~4 Theorem~5); state sums are multilinear in each vertex table and multiplicative over disjoint unions (Lean~4 Theorems~6--7).
-  \item \textbf{ABP, Bisection, Tree-Circuit, and Grid-Frontier Scaling:} $L$ ABP layers of $\le q^2$ edges sum to $\le L q^2$; bisection doubling satisfies $q^{k+1} = q\cdot q^k$ and $2^{k+1} = 2\cdot 2^k$ (axiom-free); $V$ binary-tree internal nodes of $\le q^3$ gates sum to $\le V q^3$; whereas grid boundary transfer space grows strictly as $q^{n+1} > q^n$ for all $q \ge 2$ (Lean~4 Theorems~8--11).
-  \item \textbf{Characteristic-Free $\mathsf{VNP}$ Selectors and Hierarchy Chain:} Over arbitrary $\ZZ$ (hence every field characteristic), $(1-b)t_0 + b t_1$ and its $2$-bit bilinear extension recover arbitrary table entries on $\{0,1\}$ and $\{0,1\}^2$; $\det_2$ embeds as a signed $2$-path state sum; for $n \ge 2$ and $k < s_1 < s_2 < s_3$, $n^k < n^{s_1} < n^{s_2} < n^{s_3}$; and grids/trees satisfy $E(\mathrm{Grid}_{n\times n}) = 2n(n-1)$ and $2(2^L - 1) + 1 = 2^{L+1} - 1$ (Lean~4 Theorems~12--18).
-\end{enumerate}
-\end{theorem}
-
-\section{Zero-Dependency Lean~4 Kernel and \texorpdfstring{\certschema{}}{VALIANT-HIER-CERT-1.0}}\label{sec:lean}
-
-All $18$ contraction, budget, selector, and hierarchy theorems compile in \texttt{lean/ValiantHierarchy.lean} (\texttt{v4.35.0}) with $0$ external dependencies, $0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, and $0$~warnings; two theorems (Theorems~5 and~9) depend on zero axioms whatsoever (Table~\ref{tab:lean}). Our pure-stdlib verifier \texttt{src/valiant\_certifier.py} (\certschema{}) executes zero-float exact-$\QQ$ replay across all four modes while recursively rejecting \texttt{float}, \texttt{bool}, \texttt{Decimal}, \texttt{complex}, \texttt{tuple}, non-\texttt{str} keys, malformed names, and unreduced or non-canonical rationals.
-
-\begin{table}[t!]
+\begin{table*}[t]
 \centering
-\caption{Zero-dependency Lean~4 theorem ledger (\texttt{lean/ValiantHierarchy.lean}, \texttt{v4.35.0}: $18/18$ theorems, $0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, $0$~warnings).}
+\caption{Complete 18-theorem Lean~4.35.0 kernel in \texttt{lean/ValiantHierarchy.lean} ($0$~\texttt{sorry}, $0$~\texttt{Classical.choice}, $0$~warnings; \texttt{P,Q} abbreviates \texttt{[propext, Quot.sound]}).}
 \label{tab:lean}
 \scriptsize
-\setlength{\tabcolsep}{2pt}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{@{}clll@{}}
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{@{}r l p{10.6cm} l@{}}
 \toprule
-\# & Lean~4 Theorem Identifier & Exact Integer/Nat/List Statement Verified & Axioms \\
+\# & Lean~4 Theorem Identifier & Exact Machine-Checked Statement \& Hypotheses & Axioms \\
 \midrule
-1 & \texttt{path3\_state\_sum\_bilinear} & $Z_{P_3, 2}(x, M, z) = (x^\top M) z$ over $\ZZ$ & \texttt{propext, Quot.sound} \\
-2 & \texttt{path4\_abp\_bisection\_assoc} & $P_4$: $((x^\top A)B)z = (x^\top A)(Bz) = (x^\top(AB))z$ over $\ZZ$ & \texttt{propext, Quot.sound} \\
-3 & \texttt{tree\_state\_sum\_dp\_factorization} & $8$-term binary-tree state sum $=$ bottom-up $\mathsf{VP}$ DP & \texttt{propext, Quot.sound} \\
-4 & \texttt{grid2x2\_state\_sum\_trace} & $16$-term $2\times 2$ grid state sum $= \operatorname{Tr}(ABCD)$ & \texttt{propext, Quot.sound} \\
-5 & \texttt{grid\_vertex\_table\_degree\_bound} & $q \ge 1 \wedge d \le 4 \implies q^d \le q^4$ (grid $\mathsf{VNP}$ table bound) & \texttt{none} \\
-6 & \texttt{path3\_multilinearity\_scale} & Scaling middle vertex table by $k$ scales $Z_{P_3,2}$ by $k$ & \texttt{propext, Quot.sound} \\
-7 & \texttt{disconnected\_state\_sum\_product} & Disjoint union multiplicativity $Z_{G_1 \sqcup G_2} = Z_{G_1} Z_{G_2}$ & \texttt{propext, Quot.sound} \\
-8 & \texttt{abp\_layer\_edge\_budget\_list} & Inductive \texttt{List Nat}: $L$ layers $\le q^2 \implies \sum \le L q^2$ & \texttt{propext, Quot.sound} \\
-9 & \texttt{formula\_bisection\_power\_step} & Bisection step: $q^{k+1} = q \cdot q^k \wedge 2^{k+1} = 2\cdot 2^k$ & \texttt{none} \\
-10 & \texttt{tree\_circuit\_gate\_budget\_list} & Inductive \texttt{List Nat}: $V$ nodes $\le q^3 \implies \sum \le V q^3$ & \texttt{propext, Quot.sound} \\
-11 & \texttt{grid\_transfer\_space\_exp\_growth} & $q \ge 2 \implies q^{n+1} > q^n$ (exponential grid frontier) & \texttt{propext, Quot.sound} \\
-12 & \texttt{vnp\_char\_free\_1bit\_selector} & Char-free $1$-bit selector $(1-b)t_0 + b t_1$ over $\ZZ$ & \texttt{propext, Quot.sound} \\
-13 & \texttt{vnp\_char\_free\_2bit\_selector} & Char-free $2$-bit selector on $\{0,1\}^2$ over $\ZZ$ & \texttt{propext, Quot.sound} \\
-14 & \texttt{det2\_signed\_path\_embedding} & $\det_2(A)$ embedded as signed $2$-path state sum & \texttt{propext, Quot.sound} \\
-15 & \texttt{hierarchy\_strict\_exp\_chain} & $n \ge 2 \wedge s_1 < s_2 < s_3 \implies n^{s_1} < n^{s_2} \wedge n^{s_2} < n^{s_3}$ & \texttt{propext, Quot.sound} \\
-16 & \texttt{superpoly\_beats\_fixed\_poly} & $n \ge 2 \wedge s > k \implies n^s > n^k$ ($\mathsf{VF}\subsetneq\mathsf{VBP}\subsetneq\mathsf{VP}\subsetneq\mathsf{VNP}$) & \texttt{propext, Quot.sound} \\
-17 & \texttt{grid\_edge\_count\_exact} & $n(n-1) + n(n-1) = 2n(n-1)$ grid edges & \texttt{propext, Quot.sound} \\
-18 & \texttt{binary\_tree\_vertex\_recurrence} & $2(2^L - 1) + 1 = 2^{L+1} - 1$ complete binary tree vertices & \texttt{propext, Quot.sound} \\
+1 & \texttt{path3\_state\_sum\_bilinear} & Fixed $q{=}2$, $P_3$: brute-force $4$-term edge sum $Z_{P_3,2}(x,M,z) = (x^\top M)z$ over $\ZZ$. & \texttt{P,Q} \\
+2 & \texttt{path4\_abp\_bisection\_assoc} & Fixed $q{=}2$, $P_4$: $((x^\top A)B)z = (x^\top(AB))z \wedge (x^\top A)(Bz) = (x^\top(AB))z$ over $\ZZ$. & \texttt{P,Q} \\
+3 & \texttt{tree\_state\_sum\_dp\_factorization} & Fixed $q{=}2$, $3$-edge $4$-vertex degree-$3$ rooted tree: $8$-term edge sum $=$ factored DP over $\ZZ$. & \texttt{P,Q} \\
+4 & \texttt{grid2x2\_state\_sum\_trace} & Fixed $q{=}2$, $C_4$ ($2\times 2$ cycle): $16$-term edge sum $= \operatorname{Tr}(ABCD)$ over $\ZZ$. & \texttt{P,Q} \\
+5 & \texttt{grid\_vertex\_table\_degree\_bound} & $\forall q,d\in\NN,\ q\ge 1 \wedge d\le 4 \implies q^d \le q^4$ (arithmetic power monotonicity). & \texttt{none} \\
+6 & \texttt{path3\_multilinearity\_scale} & Fixed $q{=}2$, $P_3$: scaling middle matrix $M$ by $k\in\ZZ$ scales $Z_{P_3,2}$ by $k$. & \texttt{P,Q} \\
+7 & \texttt{disconnected\_state\_sum\_product} & Scalar distributivity over finite sums: $z_1 z_2 = z_1\cdot z_2$ factored form over $\ZZ$. & \texttt{P,Q} \\
+8 & \texttt{abp\_layer\_edge\_budget\_list} & Inductive \texttt{List Nat}: $L$ entries each $\le q^2 \implies \sum \le L q^2$. & \texttt{P,Q} \\
+9 & \texttt{formula\_bisection\_power\_step} & $\forall q,k\in\NN,\ q^{k+1} = q\cdot q^k \wedge 2^{k+1} = 2\cdot 2^k$. & \texttt{none} \\
+10 & \texttt{tree\_circuit\_gate\_budget\_list} & Inductive \texttt{List Nat}: $V$ entries each $\le q^3 \implies \sum \le V q^3$. & \texttt{P,Q} \\
+11 & \texttt{grid\_transfer\_space\_exp\_growth} & $\forall q,n\in\NN,\ q\ge 2 \implies q^{n+1} > q^n$. & \texttt{P,Q} \\
+12 & \texttt{vnp\_char\_free\_1bit\_selector} & $\forall b\in\{0,1\},\,t_0,t_1\in\ZZ,\ (1-b)t_0 + b t_1 = (\text{if } b=0 \text{ then } t_0 \text{ else } t_1)$. & \texttt{P,Q} \\
+13 & \texttt{vnp\_char\_free\_2bit\_selector} & $\forall b_0,b_1\in\{0,1\},\,t_{00..11}\in\ZZ$, bilinear selector recovers exact table entry $t_{b_0 b_1}$. & \texttt{P,Q} \\
+14 & \texttt{det2\_signed\_path\_embedding} & $\forall a_{ij}\in\ZZ$, signed $2$-path contraction equals $a_{00}a_{11}-a_{01}a_{10}$. & \texttt{P,Q} \\
+15 & \texttt{hierarchy\_strict\_exp\_chain} & $\forall n\ge 2,\,s_1<s_2<s_3\in\NN,\ n^{s_1} < n^{s_2} \wedge n^{s_2} < n^{s_3}$. & \texttt{P,Q} \\
+16 & \texttt{superpoly\_beats\_fixed\_poly} & $\forall n\ge 2,\,s > k\in\NN,\ n^s > n^k$ (elementary integer exponent monotonicity). & \texttt{P,Q} \\
+17 & \texttt{grid\_edge\_count\_exact} & $\forall n\in\NN,\ n(n-1) + n(n-1) = 2n(n-1)$ ($n\times n$ grid edge count). & \texttt{P,Q} \\
+18 & \texttt{binary\_tree\_vertex\_recurrence} & $\forall L\in\NN,\ 2(2^L-1) + 1 = 2^{L+1}-1$ (complete binary tree vertex count). & \texttt{P,Q} \\
 \bottomrule
-\end{tabular}}
-\end{table}
+\end{tabular}
+\end{table*}
 
-\section{Experiments, Certified Atlas, and Adversarial Red-Teaming}\label{sec:experiments}
+\section{Specification of \texorpdfstring{\certschema{}}{VALIANT-HIER-CERT-1.0}}\label{sec:cert}
+The pure-stdlib zero-float verifier \texttt{src/valiant\_certifier.py} enforces strict JSON typing and canonical reduced rationals across four modes:
 
-All four deterministic experiments (\texttt{scripts/run\_all\_experiments.py}) reproduce end-to-end via \texttt{python scripts/verify\_all.py}. Table~\ref{tab:atlas} summarizes all $16$ exact-$\QQ$ certificates verified with zero floats in $0.049$--$4.319\,\mathrm{ms}$ each. Figure~\ref{fig:hier} compares OpenAI Theorem~1.1's three superpolynomial exponents ($\ln\ln n$ for paths, $\sqrt{\ln\ln n}$ for binary trees, $(\ln n)^{1/12}$ for grids) alongside the exponential gap between brute-force grid edge assignments $2^{2n(n-1)}$ (reaching $2^{40} = 1{,}099{,}511{,}627{,}776$ at $5\times 5$) and exact boundary-frontier dimension $2^n$ ($32$ at $5\times 5$). Figure~\ref{fig:scaling} benchmarks matched vertex counts $|V| = 2^L - 1 \in \{3,7,15,31,63\}$ ($q=3$) for polynomial path ABP/bisection ($0.086$--$3.255\,\mathrm{ms}$) and bottom-up binary-tree $\mathsf{VP}$ DP ($0.060$--$2.185\,\mathrm{ms}$) versus exponential square-grid transfer contraction ($0.112\,\mathrm{ms}$ at $2\times 2$ to $4.806\,\mathrm{ms}$ at $5\times 5$). Figure~\ref{fig:atlas} summarizes replay latencies across all $16$ certificates. Finally, \texttt{tests/test\_suite.py} cross-checks our ABP, bisection, binary-tree DP, and grid-transfer evaluators against brute-force $q^E$ summation ($P_5, T_2, T_3, \mathrm{Grid}_{2\times 3}, \mathrm{Grid}_{3\times 3}$ up to $4096$ states covering degree-$4$ interior vertices) and rejects all $54/54$ live adversarial attacks across all four modes.
+\begin{definition}[\certschema{} Acceptance Predicates]\label{def:spec}
+\normalfont A certificate is accepted iff its schema, mode, and exact rational fields satisfy:
+\begin{enumerate}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item \textbf{Mode~1 (\texttt{path\_abp\_vs\_bisection\_exact}):} Given $d\in[3,64]$, $q\in[2,8]$, endpoint vectors $x,z\in\QQ^q$, and $d-2$ interior transition matrices $M^{(1)},\dots,M^{(d-2)}\in\QQ^{q\times q}$ (having $(d-2)q^2$ interior matrix entries, plus $2q$ endpoint boundary weights), independently evaluates $Z_{P_d,q}$ by left-to-right sequential ABP multiplication and divide-and-conquer binary matrix-product bisection, requiring exact equality with \texttt{claimed\_state\_sum}.
+  \item \textbf{Mode~2 (\texttt{binary\_tree\_circuit\_dp\_exact}):} Given complete binary tree depth $L\in[2,6]$ ($2^{L-1}$ leaves, $2^{L-1}-2$ non-root internal nodes, $2^L-1$ total vertices), $q\in[2,5]$, leaf vectors $\in\QQ^q$, internal $q\times q\times q$ tensors, and root matrix $\in\QQ^{q\times q}$ (whose non-leaf DP vertex-table entry count is $q^2 + (2^{L-1}-2)q^3$, distinct from arithmetic gate count which counts both multiplications and additions per entry), computes exact bottom-up DP contraction and checks equality with \texttt{claimed\_state\_sum}.
+  \item \textbf{Mode~3 (\texttt{grid\_transfer\_vnp\_exact}):} Given $r,c\in[2,5]$, $q\in[2,3]$, and vertex tables $X_{(i,j)}\in\QQ^{q^{\deg(i,j)}}$ for all $rc$ vertices ($\deg\le 4$), contracts column-by-column over the $q^r$-dimensional boundary frontier and verifies exact equality with \texttt{claimed\_state\_sum}.
+  \item \textbf{Mode~4 (\texttt{hierarchy\_separation\_barrier\_exact}):} Verifies the characteristic-free $2$-bit selector identity on a $4$-entry rational table $[t_{00},t_{01},t_{10},t_{11}]$, computes exact grid edge count $2n(n-1)$ and complete tree vertex count $2^L-1$ for supplied $(n,L)$, and checks a finite synthetic integer exponent proxy chain $1\le k < s_1 < s_2 < s_3 \le 24$ satisfying $b^k < b^{s_1} < b^{s_2} < b^{s_3}$ (with $b\in[2,64]$). Note that the asymptotic exponents $\ln\ln n$, $\sqrt{\ln\ln n}$, and $(\ln n)^{1/12}$ plotted in Fig.~\ref{fig:hier}(a) remain below $k=2$ at $\log_2 n\le 1024$ and cross above $k=2$ only at astronomical $n$ (e.g., $\ln n > 2^{12}=4096$); Mode~4 therefore audits finite integer exponent tuples illustrating strict monotonicity once past crossover.
+\end{enumerate}
+\end{definition}
 
-\begin{table}[t!]
+\section{Experiments, Atlas, and Red-Team Audit}\label{sec:experiments}
+All experiments (\texttt{scripts/run\_all\_experiments.py}) reproduce via \texttt{python scripts/verify\_all.py}. Table~\ref{tab:atlas} lists all $16$ canonical certificates—including the exact unrounded rational values of \texttt{path\_d24\_q5} and \texttt{tree\_L5\_q3}—replayed in $0.049$--$4.319\,\mathrm{ms}$ (with $5\times 5$ grids over $2^{40} = 1{,}099{,}511{,}627{,}776$ edge assignments contracting in $4.806\,\mathrm{ms}$). Figures~\ref{fig:hier}--\ref{fig:atlas} illustrate asymptotic exponent curves, grid state-space growth vs.\ frontier dimension $2^n$, matched-vertex replay scaling, and atlas latencies. \texttt{tests/test\_suite.py} cross-checks all evaluators against brute-force $q^E$ summation ($P_5, T_2, T_3, \mathrm{Grid}_{2\times 3}, \mathrm{Grid}_{3\times 3}$ up to $4096$ states including degree-$4$ interior vertices) and rejects $54/54$ live adversarial forgeries.
+
+\begin{table}[t]
 \centering
-\caption{Atlas of $16$ exact-$\QQ$ \certschema{} certificates verified with zero floats (\texttt{results/exp1\_certified\_atlas.json}).}
+\caption{Atlas of $16$ exact-$\QQ$ \certschema{} certificates (\texttt{results/exp1\_certified\_atlas.json}; all 16 verified).}
 \label{tab:atlas}
 \scriptsize
-\setlength{\tabcolsep}{3pt}
-\resizebox{\linewidth}{!}{%
+\setlength{\tabcolsep}{2.0pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lllr@{}}
 \toprule
-Certificate File & Mode & Certified Exact-$\QQ$ Claim & Time (ms) \\
+Certificate File & M & Certified Exact-$\QQ$ Witness Summary & ms \\
 \midrule
-\texttt{path\_d4\_q2.cert.json} & Mode 1 & $P_4, q=2$ ($8$ ABP edges): ABP $=$ bisection $= -271/2$ & $0.0953$ \\
-\texttt{path\_d8\_q3.cert.json} & Mode 1 & $P_8, q=3$ ($54$ ABP edges): ABP $=$ bisection $= -26737/16$ & $0.3331$ \\
-\texttt{path\_d16\_q4.cert.json} & Mode 1 & $P_{16}, q=4$ ($224$ ABP edges): exact $-214025144665/512$ & $1.4191$ \\
-\texttt{path\_d24\_q5.cert.json} & Mode 1 & $P_{24}, q=5$ ($550$ ABP edges): $58$-bit numerator exact $Z_{P_{24},5}$ & $4.3186$ \\
-\midrule
-\texttt{tree\_L2\_q2.cert.json} & Mode 2 & $T_2, q=2$ ($3$ vertices, $4$ $\mathsf{VP}$ gates): exact $Z = -67$ & $0.0502$ \\
-\texttt{tree\_L3\_q2.cert.json} & Mode 2 & $T_3, q=2$ ($7$ vertices, $20$ $\mathsf{VP}$ gates): exact $Z = -463/2$ & $0.1336$ \\
-\texttt{tree\_L4\_q3.cert.json} & Mode 2 & $T_4, q=3$ ($15$ vertices, $171$ $\mathsf{VP}$ gates): $65190677/32$ & $0.6053$ \\
-\texttt{tree\_L5\_q3.cert.json} & Mode 2 & $T_5, q=3$ ($31$ vertices, $387$ $\mathsf{VP}$ gates): $58$-bit numerator $Z_{T_5,3}$ & $1.0592$ \\
-\midrule
-\texttt{grid\_2x2\_q2.cert.json} & Mode 3 & $2\times 2, q=2$ ($4$ edges, frontier $4$): exact $Z = 2$ & $0.1040$ \\
-\texttt{grid\_3x3\_q2.cert.json} & Mode 3 & $3\times 3, q=2$ ($12$ edges, frontier $8$): exact $Z = 376$ & $0.3743$ \\
-\texttt{grid\_4x4\_q2.cert.json} & Mode 3 & $4\times 4, q=2$ ($24$ edges, frontier $16$): exact $Z = 236688$ & $1.4197$ \\
-\texttt{grid\_3x3\_q3.cert.json} & Mode 3 & $3\times 3, q=3$ ($12$ edges, frontier $27$): exact $Z = -2709$ & $2.1825$ \\
-\midrule
-\texttt{hier\_barrier\_n4.cert.json} & Mode 4 & $n=4$, $E_{\mathrm{grid}}=24$, $V_{T_4}=15$, chain $2<3<5<8$ & $0.0577$ \\
-\texttt{hier\_barrier\_n8.cert.json} & Mode 4 & $n=8$, $E_{\mathrm{grid}}=112$, $V_{T_6}=63$, chain $3<5<8<12$ & $0.0555$ \\
-\texttt{hier\_barrier\_n16.cert.json} & Mode 4 & $n=16$, $E_{\mathrm{grid}}=480$, $V_{T_8}=255$, chain $4<6<10<15$ & $0.0492$ \\
-\texttt{hier\_barrier\_n32.cert.json} & Mode 4 & $n=32$, $E_{\mathrm{grid}}=1984$, $V_{T_{10}}=1023$, chain $5<8<13<20$ & $0.0633$ \\
+\texttt{path\_d4\_q2} & M1 & $P_4, q{=}2$ (8 int.\ entries, $+4$ end): $Z{=}-271/2$ & 0.095 \\
+\texttt{path\_d8\_q3} & M1 & $P_8, q{=}3$ (54 int.\ entries, $+6$ end): $Z{=}-26737/16$ & 0.333 \\
+\texttt{path\_d16\_q4} & M1 & $P_{16}, q{=}4$ (224 int.\ entries): $-214025144665/512$ & 1.419 \\
+\texttt{path\_d24\_q5} & M1 & $P_{24}, q{=}5$ (550 int.): $265230714110774371/256$ & 4.319 \\
+\texttt{tree\_L2\_q2} & M2 & $T_2, q{=}2$ (3 verts, 4 DP entries): $Z{=}-67$ & 0.050 \\
+\texttt{tree\_L3\_q2} & M2 & $T_3, q{=}2$ (7 verts, 20 DP entries): $Z{=}-463/2$ & 0.134 \\
+\texttt{tree\_L4\_q3} & M2 & $T_4, q{=}3$ (15 verts, 171 DP entries): $65190677/32$ & 0.605 \\
+\texttt{tree\_L5\_q3} & M2 & $T_5, q{=}3$ (31 verts, 387 DP): $-188739623287773875/32768$ & 1.059 \\
+\texttt{grid\_2x2\_q2} & M3 & $2{\times}2, q{=}2$ (4 edges, frontier 4): $Z{=}2$ & 0.104 \\
+\texttt{grid\_3x3\_q2} & M3 & $3{\times}3, q{=}2$ (12 edges, frontier 8): $Z{=}376$ & 0.374 \\
+\texttt{grid\_4x4\_q2} & M3 & $4{\times}4, q{=}2$ (24 edges, frontier 16): $Z{=}236688$ & 1.420 \\
+\texttt{grid\_3x3\_q3} & M3 & $3{\times}3, q{=}3$ (12 edges, frontier 27): $Z{=}-2709$ & 2.183 \\
+\texttt{hier\_barrier\_n4} & M4 & Proxy $(n{=}4, L{=}4)$: $E{=}24, V{=}15$, $2{<}3{<}5{<}8$ & 0.058 \\
+\texttt{hier\_barrier\_n8} & M4 & Proxy $(n{=}8, L{=}6)$: $E{=}112, V{=}63$, $3{<}5{<}8{<}12$ & 0.056 \\
+\texttt{hier\_barrier\_n16} & M4 & Proxy $(n{=}16, L{=}8)$: $E{=}480, V{=}255$, $4{<}6{<}10{<}15$ & 0.049 \\
+\texttt{hier\_barrier\_n32} & M4 & Proxy $(n{=}32, L{=}10)$: $E{=}1984, V{=}1023$, $5{<}8{<}13{<}20$ & 0.063 \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\begin{figure}[t!]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.90\linewidth]{figures/fig1_hierarchy_and_grid.png}
-\caption{Valiant hierarchy exponents and grid state space. (a)~OpenAI Theorem~1.1 superpolynomial exponents ($\ln\ln n$, $\sqrt{\ln\ln n}$, $(\ln n)^{1/12}$) versus fixed polynomial degree $k=2$. (b)~Brute-force grid edge assignments $2^{2n(n-1)}$ versus exact transfer-matrix frontier dimension $2^n$.}
+\includegraphics[width=\columnwidth]{figures/fig1_hierarchy_and_grid.png}
+\vspace{-1.2em}
+\caption{(a)~Asymptotic exponents $\ln\ln n$, $\sqrt{\ln\ln n}$, $(\ln n)^{1/12}$ vs.\ $k=2$ for $\log_2 n\in[16,1024]$ (noting crossover above $2$ occurs at much larger $n$). (b)~Grid edge assignments $2^{2n(n-1)}$ vs.\ exact transfer-matrix frontier $2^n$.}
 \label{fig:hier}
 \end{figure}
 
-\begin{figure}[t!]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.90\linewidth]{figures/fig2_model_replay_scaling.png}
-\caption{Exact-$\QQ$ model replay scaling. (a)~Matched-vertex polynomial verification times for paths ($\mathsf{VBP}$) and complete binary trees ($\mathsf{VP}$) at $q=3$. (b)~Exponential treewidth replay cost on $n\times n$ square grids ($2\times 2 \to 5\times 5$, $q=2$).}
+\includegraphics[width=\columnwidth]{figures/fig2_model_replay_scaling.png}
+\vspace{-1.2em}
+\caption{(a)~Matched-vertex exact-$\QQ$ replay latency for paths and complete binary trees ($q=3$). (b)~Exponential transfer-frontier cost on $n\times n$ square grids ($2\times 2\to 5\times 5, q=2$).}
 \label{fig:scaling}
 \end{figure}
 
-\begin{figure}[t!]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.90\linewidth]{figures/fig3_atlas_summary.png}
-\caption{Certified atlas performance. (a)~Zero-float exact-$\QQ$ replay latencies across all $16$ \certschema{} certificates ($0.049$--$4.319\,\mathrm{ms}$). (b)~Balanced coverage ($4$ instances per mode) across all four certification modes.}
+\includegraphics[width=\columnwidth]{figures/fig3_atlas_summary.png}
+\vspace{-1.2em}
+\caption{(a)~Zero-float replay latencies across all 16 \certschema{} certificates ($0.049$--$4.319\,\mathrm{ms}$). (b)~Balanced 4-per-mode coverage.}
 \label{fig:atlas}
 \end{figure}
 
-\section{Scope Boundaries and Outlook}\label{sec:outlook}
-
-This work certifies exact finite-order path, binary-tree, and square-grid state sums, model-specific contraction equivalences, characteristic-free Boolean $\mathsf{VNP}$ selectors, and finite superpolynomial hierarchy chains over $\ZZ/\QQ$, rather than formalizing the full degree-component border-complexity lower-bound proofs or Euclidean tensor-price machinery of~\cite{openai2026hierarchy,openai2026vpvnp}. Extending \certschema{} to treewidth-bounded minor decompositions for arbitrary graph families is a natural next direction.
+\section{Conclusion}\label{sec:outlook}
+We delivered an explicitly scoped 18-theorem Lean~4.35.0 kernel for fixed $q=2$ small-graph contraction identities and elementary arithmetic bounds, paired with the fully specified zero-float state-sum evaluator \certschema{}, 16 canonical certificates with exact rational outputs, brute-force $q^E$ cross-checks, and 54/54 live adversarial rejections.
 
 \bibliographystyle{plain}
 \bibliography{references}
-
 \end{document}

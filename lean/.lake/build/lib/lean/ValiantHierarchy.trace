@@ -1,0 +1,31 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["2d96c0558ec05b71.olean"],
+  "m": false,
+  "i": "7911f969ad5c8e92.ilean",
+  "c": "c092efb2e6fbe9da.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\.lake\\build\\lib\\lean c:\\Users\\lluis\\.elan\\toolchains\\leanprover--lean4---v4.35.0\\bin\\lean.exe D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\ValiantHierarchy.lean -o D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\.lake\\build\\lib\\lean\\ValiantHierarchy.olean -i D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\.lake\\build\\lib\\lean\\ValiantHierarchy.ilean -c D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\.lake\\build\\ir\\ValiantHierarchy.c --setup D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\.lake\\build\\ir\\ValiantHierarchy.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["deps",
+   [["valiant_hierarchy/ValiantHierarchy:extraDep",
+     [["@valiant_hierarchy:extraDep", "00000000000006bb"]]],
+    ["imports", "00000000000006bb"]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.35.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+   "407ce514b71d5a10"],
+  ["D:\\Datos\\gemini\\antigravity\\scratch\\airr-frontier-lab\\paper20-valiant-hierarchy-certificates\\lean\\ValiantHierarchy.lean",
+   "79c62a84faf1687f"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: ValiantHierarchy", "779233c298c80163"],
+  ["Package.id?: (some valiant_hierarchy)", "a6ca9a27db7b4c3e"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "22154a4c47f60e12"}

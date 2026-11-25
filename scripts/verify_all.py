@@ -63,7 +63,7 @@ def check_lean() -> None:
         raise RuntimeError(f"lake build failed:\n{r1.stdout}\n{r1.stderr}")
     if "warning:" in r1.stdout or "warning:" in r1.stderr:
         raise RuntimeError(f"Lean warnings detected:\n{r1.stdout}\n{r1.stderr}")
-    r2 = subprocess.run(["lake", "env", "lean", "AuditAxioms.lean"], cwd=lean_dir, capture_output=True, text=True, check=False)
+    r2 = subprocess.run(["lake", "env", "lean", "-j", "1", "AuditAxioms.lean"], cwd=lean_dir, capture_output=True, text=True, check=False)
     if r2.returncode != 0:
         raise RuntimeError(f"AuditAxioms failed:\n{r2.stdout}\n{r2.stderr}")
     combined = r2.stdout + r2.stderr
@@ -87,7 +87,7 @@ def check_certs() -> None:
 
 
 def check_pytest() -> None:
-    r = subprocess.run([sys.executable, "-m", "pytest", "-q"], cwd=ROOT, capture_output=True, text=True, check=False)
+    r = subprocess.run([sys.executable, "-m", "pytest", "-p", "no:cacheprovider", "-q"], cwd=ROOT, capture_output=True, text=True, check=False)
     if r.returncode != 0:
         raise RuntimeError(f"pytest failed:\n{r.stdout}\n{r.stderr}")
     print(f"[PASS] pytest: {r.stdout.strip()}")
